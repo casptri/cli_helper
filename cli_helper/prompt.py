@@ -24,6 +24,6 @@ def nested_prompt(data: dict, parent: any = None, level = 0) -> any:
         if answer["template"] == None:
             return None
         nest = nested_prompt(answer["template"], data, level)
-        if nest not None:
+        if nest != None:
             selection = nest
     return selection
