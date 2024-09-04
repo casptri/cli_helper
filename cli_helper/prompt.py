@@ -1,6 +1,7 @@
 import os
+from pathlib import Path
 import inquirer
-import click
+
 
 def nested_prompt(data: dict, _root: bool = True) -> any:
     os.system("clear")
@@ -30,3 +31,6 @@ def nested_prompt(data: dict, _root: bool = True) -> any:
         if nest != None:
             selection = nest
     return selection
+
+def file_select_prompt(data: Union[str, Path]) -> Path:
+    pass
