@@ -1,1 +1,1 @@
-from .prompt import prompt_dict as prompt_dict
+from .prompt import nested_prompt as nested_prompt

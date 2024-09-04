@@ -1,18 +1,15 @@
 import os
 import inquirer
 
-def prompt_dict(data: dict):
-    #os.system("clear")
+def nested_prompt(data: dict) -> any:
     selection = []
     for key, value in data.items():
-        print(type(value))
         if type(value) is dict:
-            sel = ("--> " + key, key)
+            sel = ("--> " + key, value)
             selection.append(sel)
         else:
-            sel = (" * " + key, key)
+            sel = (" * " + key, value)
             selection.append(sel)
-    print(selection)
     question = [
         inquirer.List(
             "template", message="Template Menu", choices=selection, carousel=True
