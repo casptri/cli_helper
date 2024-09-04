@@ -17,9 +17,6 @@ def nested_prompt(data: dict) -> any:
     ]
     answer = inquirer.prompt(question)
     ret = answer["template"]
-    print(ret)
-    for e in ret:
-        print(type(e))
-    if type(ret[1]) is dict:
-        sel = nested_prompt(ret[1])
+    if type(ret) is dict:
+        sel = nested_prompt(ret)
     return sel
