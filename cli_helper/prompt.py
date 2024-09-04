@@ -1,6 +1,7 @@
+import os
+import inquirer
 
 def prompt_dict(data: dict):
-
     os.system("clear")
     selection = []
     for key, value in data.items():
