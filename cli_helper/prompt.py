@@ -4,6 +4,7 @@ import inquirer
 def nested_prompt(data: dict, parent: any = None, level = 0) -> any:
     ret = data
     selection = []
+    print(level)
     level += 1
     while type(ret) == dict:
         if parent:
