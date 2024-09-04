@@ -2,34 +2,26 @@ import os
 import inquirer
 
 def nested_prompt(data: dict, parent: any = None, level = 0) -> any:
-    ret = data
-    selection = []
-    print(level)
     level += 1
-    while type(ret) == dict:
+    selection = data
+    while type(selection) == dict:
+        options = []
         if parent:
-            selection.append(("<-- back", None))
+            options.append(("<-- back", None))
         for key, value in data.items():
             if type(value) is dict:
                 sel = ("--> " + key, value)
-                selection.append(sel)
+                options.append(sel)
             else:
                 sel = (" * " + key, value)
-                selection.append(sel)
+                options.append(sel)
         question = [
             inquirer.List(
-                "template", message="Template Menu", choices=selection, carousel=True
+                "template", message="Template Menu", choices=options, carousel=True
             ),
         ]
         answer = inquirer.prompt(question)
-        #ret = answer["template"]
-        nest = nested_prompt(answer["template"], data, level)
-        if nest == None:
-            continue
-        else:
-            ret = nest
-        #print(ret)
-        #if type(ret) is dict:
-        #    ret = nested_prompt(ret)
-        #    print(ret)
-    return ret
+        if answer["template"] == None:
+            return None
+        selection = nested_prompt(answer["template"], data, level)
+    return selection
