@@ -1,7 +1,7 @@
 import os
 import inquirer
 
-def nested_prompt(data: dict) -> any:
+def nested_prompt(data: dict, _root: bool = True) -> any:
     selection = data
     while type(selection) == dict:
         opt_dict = []
@@ -14,7 +14,7 @@ def nested_prompt(data: dict) -> any:
                 sel = (" * " + key, value)
                 opt_any.append(sel)
         options = opt_dict + opt_any
-        if parent:
+        if not _root:
             options.append(("<-- back", None))
         question = [
             inquirer.List(
@@ -24,7 +24,7 @@ def nested_prompt(data: dict) -> any:
         answer = inquirer.prompt(question)
         if answer["template"] == None:
             return None
-        nest = nested_prompt(answer["template"])
+        nest = nested_prompt(answer["template"], False)
         if nest != None:
             selection = nest
     return selection
