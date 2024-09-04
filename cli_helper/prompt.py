@@ -2,7 +2,6 @@ import os
 import inquirer
 
 def nested_prompt(data: dict) -> any:
-    level += 1
     selection = data
     while type(selection) == dict:
         opt_dict = []
