@@ -2,7 +2,7 @@ import os
 import inquirer
 
 def prompt_dict(data: dict):
-    os.system("clear")
+    #os.system("clear")
     selection = []
     for key, value in data.items():
         if type(value) == dict:
@@ -11,6 +11,7 @@ def prompt_dict(data: dict):
         else:
             sel = (" * " + key, key)
             selection.append(sel)
+    print(selection)
     question = [
         inquirer.List(
             "template", message="Template Menu", choices=selection, carousel=True
