@@ -1,1 +1,1 @@
-from .prompt import prompt_dict as prompr_dict
+from .prompt import prompt_dict as prompt_dict
