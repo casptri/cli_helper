@@ -1,7 +1,8 @@
-import os
 import inquirer
+import click
 
 def nested_prompt(data: dict, _root: bool = True) -> any:
+    click.clear()
     selection = data
     while type(selection) == dict:
         opt_dict = []
