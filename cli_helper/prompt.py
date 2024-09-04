@@ -3,8 +3,10 @@ import inquirer
 
 def nested_prompt(data: dict, parent: any = None) -> any:
     ret = data
+    selection = []
     while type(ret) == dict:
-        selection = [("<-- back", parent) ]
+        if parent:
+            selection.append(("<-- back", parent))
         for key, value in data.items():
             if type(value) is dict:
                 sel = ("--> " + key, value)
@@ -19,7 +21,7 @@ def nested_prompt(data: dict, parent: any = None) -> any:
         ]
         answer = inquirer.prompt(question)
         #ret = answer["template"]
-        ret = nested_prompt(answer["template"])
+        ret = nested_prompt(answer["template"], data)
         #print(ret)
         #if type(ret) is dict:
         #    ret = nested_prompt(ret)
