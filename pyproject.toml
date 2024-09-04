@@ -12,6 +12,7 @@ packages = [
 python = "^3.10"
 click = "^8.1.7"
 watchdog = "^4.0.1"
+inquirer = "^3.4.0"
 
 [tool.poetry.group.dev.dependencies]
 pytest = "^8.2.1"
