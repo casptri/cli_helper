@@ -23,5 +23,7 @@ def nested_prompt(data: dict, parent: any = None, level = 0) -> any:
         answer = inquirer.prompt(question)
         if answer["template"] == None:
             return None
-        selection = nested_prompt(answer["template"], data, level)
+        nest = nested_prompt(answer["template"], data, level)
+        if nest not None:
+            selection = nest
     return selection
