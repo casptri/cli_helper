@@ -5,7 +5,8 @@ def prompt_dict(data: dict):
     #os.system("clear")
     selection = []
     for key, value in data.items():
-        if type(value) == dict:
+        print(type(value))
+        if type(value) is dict:
             sel = ("--> " + key, key)
             selection.append(sel)
         else:
