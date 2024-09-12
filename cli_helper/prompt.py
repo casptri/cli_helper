@@ -1,6 +1,7 @@
 import os
 from pathlib import Path
 import inquirer
+from typing import Union
 
 
 def nested_prompt(data: dict, _root: bool = True) -> any:
